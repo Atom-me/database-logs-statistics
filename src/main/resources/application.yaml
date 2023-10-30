@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://8.140.50.73:3306/orchestrator
+    username: root
+    password: "voo9ePh:"
+
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
+  type-aliases-package: com.atom.statistics.entity
+
+
+server:
+  port: 9528

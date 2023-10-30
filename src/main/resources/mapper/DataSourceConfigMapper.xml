@@ -1,0 +1,18 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.atom.statistics.mapper.DataSourceConfigMapper">
+
+    <insert id="insertDataSourceConfig" parameterType="com.atom.statistics.entity.DataSourceConfig">
+        INSERT INTO datasource_config
+            (name, database_type, host, port, username, password)
+        VALUES (#{name}, #{databaseType}, #{host}, #{port}, #{username}, #{password})
+    </insert>
+
+
+    <select id="getAllDataSourceConfigs" resultType="com.atom.statistics.entity.DataSourceConfig">
+        SELECT id, name, database_type as databaseType, host, port, username, password
+        FROM datasource_config
+    </select>
+
+
+</mapper>

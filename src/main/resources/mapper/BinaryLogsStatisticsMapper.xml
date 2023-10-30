@@ -1,0 +1,24 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.atom.statistics.mapper.BinaryLogsStatisticsMapper">
+
+    <insert id="insertBinaryLogsStatistics" parameterType="com.atom.statistics.entity.BinaryLogsStatistics">
+        REPLACE INTO binary_logs_statistics
+        (database_host, database_port, log_name, file_size, encrypted, collect_time, create_time,
+         update_time)
+        VALUES (#{databaseHost}, #{databasePort}, #{logName}, #{fileSize}, #{encrypted}, #{collectTime},
+                #{createTime},
+                #{updateTime})
+    </insert>
+
+
+    <select id="getBinLogFilesByDatabaseHostAndDatabasePort"
+            resultType="com.atom.statistics.entity.BinaryLogsStatistics">
+        select database_host as databaseHost, database_port as databasePort, log_name as logName, file_size as fileSize
+        from binary_logs_statistics
+        where database_host = #{databaseHost}
+          and database_port = #{databasePort}
+        order by id asc
+    </select>
+
+</mapper>

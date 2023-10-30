@@ -1,0 +1,35 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.atom.statistics.mapper.InformationSchemaFilesStatisticsMapper">
+
+    <insert id="insertInformationSchemaFilesStatistics"
+            parameterType="com.atom.statistics.entity.InformationSchemaFilesStatistics">
+        REPLACE INTO information_schema_files_statistics
+        (database_host, database_port, database_type, file_id, file_name, tablespace_name, free_extents, total_extents,
+         data_free, collect_time, create_time,
+         update_time)
+        VALUES (#{databaseHost}, #{databasePort}, #{databaseType}, #{fileId}, #{fileName}, #{tablespaceName},
+                #{freeExtents}, #{totalExtents}, #{dataFree}, #{collectTime},
+                #{createTime},
+                #{updateTime})
+    </insert>
+
+
+    <select id="getFilesByDatabaseHostAndDatabasePort"
+            resultType="com.atom.statistics.entity.InformationSchemaFilesStatistics">
+        SELECT id,
+               database_host   as databaseHost,
+               database_port   as databasePort,
+               file_id         as fileId,
+               file_name       as fileName,
+               tablespace_name as tablespaceName,
+               free_extents    as freeExtents,
+               total_extents   as totalExtents,
+               data_free       as dataFree
+        FROM information_schema_files_statistics
+        WHERE database_host = #{databaseHost}
+          AND database_port = #{databasePort}
+    </select>
+
+
+</mapper>

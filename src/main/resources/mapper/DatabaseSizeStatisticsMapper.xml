@@ -1,0 +1,14 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.atom.statistics.mapper.DatabaseSizeStatisticsMapper">
+
+    <insert id="insertDatabaseSizeStatistics" parameterType="com.atom.statistics.entity.DatabaseSizeStatistics">
+        INSERT INTO database_size_statistics
+        (database_host, database_port, database_type, database_name, database_size, collect_time, create_time,
+         update_time)
+        VALUES (#{databaseHost}, #{databasePort}, #{databaseType}, #{databaseName}, #{databaseSize}, #{collectTime},
+                #{createTime},
+                #{updateTime})
+    </insert>
+
+</mapper>
